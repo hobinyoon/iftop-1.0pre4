@@ -10,8 +10,10 @@
 
 /* 40 / 2  */
 #define HISTORY_LENGTH  20
-#define RESOLUTION 2
-#define DUMP_RESOLUTION 300
+#define RESOLUTION 1
+
+// Doesn't seem to be used
+//#define DUMP_RESOLUTION 300
 
 /* At least OpenBSD and NexentaCore do not
  * define s6_addr32 for user land settings.
