@@ -700,7 +700,7 @@ void packet_init() {
     have_ip6_addr = result & 0x04;
     
     if(have_ip_addr) {
-      fprintf(stderr, "IP address is: %s\n", inet_ntoa(if_ip_addr));
+      fprintf(stderr, "# IP address is: %s\n", inet_ntoa(if_ip_addr));
     }
     if(have_ip6_addr) {
        char ip6str[INET6_ADDRSTRLEN];
@@ -711,7 +711,7 @@ void packet_init() {
     }
 
     if(have_hw_addr) {
-      fprintf(stderr, "MAC address is:");
+      fprintf(stderr, "# MAC address is:");
       for (i = 0; i < 6; ++i)
 	fprintf(stderr, "%c%02x", i ? ':' : ' ', (unsigned int)if_hw_addr[i]);
       fprintf(stderr, "\n");

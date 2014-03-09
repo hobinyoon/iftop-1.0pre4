@@ -65,7 +65,7 @@ get_addrs_ioctl(char *interface, char if_hw_addr[], struct in_addr *if_ip_addr, 
     return -1;
   }
 
-  fprintf(stderr,"interface: %s\n", interface);
+  fprintf(stderr,"# interface: %s\n", interface);
 
   memset(if_hw_addr, 0, 6);
   strncpy(ifr.ifr_name, interface, IFNAMSIZ);
