@@ -15,6 +15,7 @@ static const char rcsid[] = "$Id: util.c,v 1.1 2002/03/24 17:27:12 chris Exp $";
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "iftop.h"
@@ -61,3 +62,39 @@ void xfree(void *v) {
     if (v) free(v);
 }
 
+void print_cur_datetime() {
+  char tmstr[20];
+  time_t t;
+  struct tm *lt;
+
+  t = time(NULL);
+  lt = localtime(&t);
+  if (lt == NULL) {
+    perror("localtime");
+    exit(EXIT_FAILURE);
+  }
+
+  if (strftime(tmstr, sizeof(tmstr), "%y%m%d-%H%M%S", lt) == 0) {
+    fprintf(stderr, "strftime returned 0");
+    exit(EXIT_FAILURE);
+  }
+
+  printf("%s\n", tmstr);
+}
+
+void get_cur_datetime(char* tmstr, size_t tmstr_size) {
+  time_t t;
+  struct tm *lt;
+
+  t = time(NULL);
+  lt = localtime(&t);
+  if (lt == NULL) {
+    perror("localtime");
+    exit(EXIT_FAILURE);
+  }
+
+  if (strftime(tmstr, tmstr_size, "%y%m%d-%H%M%S", lt) == 0) {
+    fprintf(stderr, "strftime returned 0");
+    exit(EXIT_FAILURE);
+  }
+}
